@@ -1,4 +1,3 @@
 #!/usr/bin/python3
 
-for n in 'abcdefghijklmnopqrstuvwxyz':
-    print("{:s}".format(n), end='')
+print("".join(chr(i) for i in range(97, 123)), end='')
