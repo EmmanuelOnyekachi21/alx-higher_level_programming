@@ -58,7 +58,7 @@ class Square:
 
     def my_print(self):
         """ Public instance method that prints in stdout the square with the character '#' """
-        if (self.__size == 0):
-            print("\n")
+        if self.__size == 0:
+            print()
         for i in range(0, self.__size):
           print(self.__size * '#')
