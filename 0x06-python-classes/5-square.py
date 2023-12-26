@@ -13,7 +13,7 @@ class Square:
     area(self): Public instance method that returns the current square area.
     size(self): Getter method to retrieve the size attribute
     size(self, value): Setter method to set the size attribute
-    my_print(self): Public instance method that prints in stdout the square with the character '#'
+    my_print(self): Public instance method that prints the square pattern'
     """
     def __init__(self, size=0):
         """Initializes a Square instance with a given size
@@ -61,4 +61,4 @@ class Square:
         if self.__size == 0:
             print()
         for i in range(0, self.__size):
-          print(self.__size * '#')
+          print(self.__size * "#")
