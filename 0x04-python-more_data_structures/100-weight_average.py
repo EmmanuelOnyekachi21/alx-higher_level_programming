@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def weight_average(my_list=[]):
-    if not my_list: # Check if the list is empty
+    if not my_list:     # Check if the list is empty
         return 0
 
     total_weighted_sum = 0
