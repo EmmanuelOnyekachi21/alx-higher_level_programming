@@ -15,7 +15,7 @@ class Rectangle:
         height (property): Retrieves the height of the Rectangle
         width (setter): Sets the width of the Rectangle
         height (setter): Sets the height of the Rectangle
-        __init__(self, width=0, height=0): Instantiate a Rectangle object with optional width and height.
+        __init__(self, width=0, height=0): Instantiate a Rectangle object.
         """
     def __init__(self, width=0, height=0):
         """
@@ -37,6 +37,7 @@ class Rectangle:
             int: The width of the rectangle
         """
         return self.__width
+
     @width.setter
     def width(self, value):
         """
