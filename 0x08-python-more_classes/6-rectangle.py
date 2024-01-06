@@ -9,6 +9,7 @@ class Rectangle:
     Attributes:
         __width(int): The width of the Rectangle
         __height(int): The height of the Rectangle
+        number_of_instances: Class attribute to track the number of instances
 
     Methods:
         width (property): Retrieve the width of the Rectangle
@@ -23,7 +24,8 @@ class Rectangle:
         __del__(): reduces the instance count upon object deletion.
         """
 
-    number_of_instances = 0     # Class attribute to track the number of instances
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """
         Initialize a Rectangle object with optional width and height.
