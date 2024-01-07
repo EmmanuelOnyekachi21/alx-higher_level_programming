@@ -1,0 +1,70 @@
+====================
+USAGE: print_square(size)
+====================
+
+This function first validates the size argument to ensure it meets the specified conditions:
+	- It checks if size is an integer and raises a TypeError if it's not.
+ 	- It ensures size is not negative and raises a ValueError if it's less than zero.
+
+Then, it checks if size is an integer and raises a TypeError if it's not.
+It ensures size is not negative and raises a ValueError if it's less than zero.
+
+Printing a Square
+==================
+
+The `print_square()` function prints a square of `#` characters with a specified size.
+
+First things first, we import the function:
+
+::
+
+	>>> print_square = __import__('4-print_square').print_square
+	>>> print_square(4)
+	####
+	####
+	####
+	####
+
+	>>> print_square(10)
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+
+	>>> print_square(0)
+
+	>>> print_square(1)
+	#
+
+Invalid Input Handling
+========================
+
+This function handles invalid inputs as described below:
+
+::
+
+	>>> print_square(-1)
+	Traceback (most recent call last):
+		...
+	ValueError: size must be >= 0
+
+	>>> print_square(3.5)
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
+
+	>>> print_square('abc')
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
+
+	>>> print_square([])
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
