@@ -1,0 +1,53 @@
+=========================================
+How to use matrix_divided(matrix, div)
+=========================================
+
+This function divides all elements of a matrix by a divisor.
+
+- For numbers, the division is equivalent to using the '/' operator.
+
+Numbers
+=======
+
+The function works with integers and floating-point values.
+
+We must from import the fuction.
+
+::
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+	>>> matrix = [[1, 2, 3], [4, 5, 6]].copy()
+	>>> print(matrix_divided(matrix, 3))
+	[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+	>>> print(matrix)
+	[[1, 2, 3], [4, 5, 6]]
+	>>> print(matrix_divided([[10.20, 20], [5, 30], [10.679, 15.356]], 5))
+	[[2.04, 4.0], [1.0, 6.0], [2.14, 3.07]]
+
+Non-numbers
+===========
+
+The function also works with non-numeric elements in the matrix.
+
+::
+	>>> print(matrix_divided([[1, 2], [3, 'a']], 2))
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> print(matrix_divided([[1, 2, 3], [4, 5]], 3))
+	Traceback (most recent call last):
+		...
+	TypeError: Each row of the matrix must have the same size
+	>>> print(matrix_divided([[1, 2, 3], [4, 5, 6]], 'a'))
+	Traceback (most recent call last):
+        	...
+    	TypeError: div must be a number
+
+    	>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+    	Traceback (most recent call last):
+        	...
+    	ZeroDivisionError: division by zero
+	>>> print(matrix_divided("strange", 5))
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
