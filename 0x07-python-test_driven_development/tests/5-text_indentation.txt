@@ -1,0 +1,44 @@
+============================================
+How to Use text_indentation Function Doctests
+============================================
+
+This file demonstrates the usage of the `text_indentation()` function.
+
+Printing Text with Newlines
+===========================
+
+The function `text_indentation()` adds two newlines after each '.', '?', or ':' character in the text.
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello. This is a test. Does it work?")
+Hello.
+This is a test.
+Does it work?
+
+Handling Different Texts
+========================
+
+The function handles various texts containing '.', '?', and ':' characters in different contexts.
+
+>>> text_indentation("Hello: how are you? Fine, thank you.")
+Hello:
+how are you?
+Fine, thank you.
+
+>>> text_indentation("One sentence. Another sentence. Final sentence.")
+One sentence.
+Another sentence.
+Final sentence.
+
+Invalid Inputs
+==============
+
+The function correctly handles invalid inputs by raising appropriate errors.
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation("This is a test sentence with consecutive  spaces.")
+This is a test sentence with consecutive  spaces.
