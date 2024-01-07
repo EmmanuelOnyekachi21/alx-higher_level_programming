@@ -1,0 +1,55 @@
+=============================================
+USAGE: say_my_name(first_name, last_name="")
+=============================================
+
+This function prints formatted string with the provided first and last names.
+
+Firstly, we import the function:
+
+::
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Next, we test for strings.
+
+Strings
+========
+
+The function works with strings representing first and last names.
+
+::
+	>>> say_my_name("John", "Smith")
+	My name is John Smith
+	>>> say_my_name("Walter", "White")
+	My name is Walter White
+	>>> say_my_name("Bob")
+	My name is Bob 
+
+Non-strings
+============
+
+The function raises a TypeError when arguments are not strings.
+
+::
+	>>> say_my_name(12, "White")
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+	>>> say_my_name("John", None)
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+
+Empty Strings
+==============
+
+The function works with empty strings.
+
+::
+	>>> say_my_name("", "")
+	My name is  
+
+	>>> say_my_name("", "Doe")
+	My name is  Doe
+
+	>>> say_my_name("Alice", "")
+	My name is Alice 
