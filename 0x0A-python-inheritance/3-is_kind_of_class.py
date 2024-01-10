@@ -9,7 +9,7 @@ def is_kind_of_class(obj, a_class):
     """
     checks if object is an instance or an instance inherited from a
     specified class
-    
+
     Args:
         obj: Object
         a_class: A class
