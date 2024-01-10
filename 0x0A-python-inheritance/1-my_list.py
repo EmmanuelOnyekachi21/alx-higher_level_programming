@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-"""
-This Module creates a class `MyList` that inherits from the Base class `list`
+"""This contains a class definition which extends the list class
+adding an instance method to produce a sorted replica of the list
 """
 
 
 class MyList(list):
-    """
-    This class inherits from the Base class `list`
+    """This class extends the list class
 
-    Public Instance Method:
-        print_sorted(self): that prints the list, but sorted (ascending sort)
-
+    it has an added instance method which prints the list in  sorted ascending
+    format.
     """
+
     def print_sorted(self):
-        """
-        This class prints the list, but sorted in asceding order.
-        """
+        """prints a sorted ascending format of the list."""
         print(sorted(self))
