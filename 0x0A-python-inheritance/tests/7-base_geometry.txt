@@ -1,0 +1,47 @@
+This is docfile test for the BaseGeometry class in 7-base_geometry.py
+
+First import the module
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Next we create an instance of the class and validate some values
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> bg.integer_validator("my_size", 200)
+
+Next we try for expected errors
+>>> try:
+... 	bg.integer_validator("name", "John")
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] name must be an integer
+
+>>> try:
+... 	bg.integer_validator("age", 0)
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] age must be greater than 0
+
+>>> try:
+... 	bg.integer_validator("distance", -4)
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] distance must be greater than 0
+
+>>> try:
+... 	bg.integer_validator("age", 8.5)
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] age must be an integer
+
+>>> try:
+... 	bg.integer_validator("age", [25, 30, 40])
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] age must be an integer
+
+>>> try:
+... 	print(bg.area())
+... except Exception as e:
+... 	print("[{}] {}".format(e.__class__.__name__, e))
+[Exception] area() is not implemented
