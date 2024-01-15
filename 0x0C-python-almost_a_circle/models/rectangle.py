@@ -28,13 +28,11 @@ class Rectangle(Base):
             __y (int): Y-coordinate of the rectangle's position.
             id (int): Identifier for the rectangle.
         """
-
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
-
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
 
         @property
         def width(self):
@@ -44,7 +42,7 @@ class Rectangle(Base):
             return self.__width
 
         @width.setter
-        def width(self, value):
+        def width(self, width):
             """
             Setter for the width attribute.
 
@@ -52,10 +50,13 @@ class Rectangle(Base):
                 value (int): New value for the width.
 
             Raises:
+                TypeError: If not an integer
                 ValueError: If the value is not a positive integer.
             """
-            if not isinstance(value, int) or value <= 0:
-                raise ValueError("width must be >= 0")
+            if type(width) is not int:
+                raise TypeError("width must be an integer")
+            if width <= 0:
+                raise ValueError("width must be > 0")
             self.__width = width
 
         @property
@@ -66,7 +67,7 @@ class Rectangle(Base):
             return self.__height
 
         @height.setter
-        def height(self, value):
+        def height(self, height):
             """
             Setter for the height attribute.
 
@@ -74,11 +75,14 @@ class Rectangle(Base):
                 value(int): New value for the height.
 
             Raises:
+                TypeError: If not an integer
                 ValueError: If the value is not a positive integer.
             """
-            if not isinstance(value, int) or value <= 0:
-                raise ValueError("Height must be non-negative")
-            self.__height = value
+            if type(height) is not int:
+                raise TypeError("Height must be an integer")
+            if height <= 0:
+                raise ValueError("Height must be > 0")
+            self.__height = height
 
         @property
         def x(self):
@@ -88,18 +92,21 @@ class Rectangle(Base):
             return self.__x
 
         @x.setter
-        def x(self, value):
+        def x(self, x):
             """
             Setter for the x attribute.
 
             Args:
                 value (int): New value for the x-coordinate.
             Raises:
-                ValueError: If the value is not an integer.
+                TypeError: If value is not an integer.
+                ValueError: If the value is not > 0.
             """
-            if not isinstance(value, int) or value <= 0:
-                raise ValueError("X-coordinate must be non-negative")
-            self.__x = value
+            if type(x) is not int:
+                raise TypeError("x must be an integer")
+            if x < 0:
+                raise ValueError("x must be >= 0")
+            self.__x = x
 
         @property
         def y(self):
@@ -109,15 +116,18 @@ class Rectangle(Base):
             return self.__y
 
         @y.setter
-        def y(self, value):
+        def y(self, y):
             """
             Setter for the y attribute.
 
             Args:
                 value (int): New value for the y-coordinate.
             Raises:
-                ValueError: If the value is not an integer.
+                TypeError: If the value is not an integer.
+                ValueError: If y is < 0
             """
-            if not isinstance(value, int) or value <= 0:
-                raise ValueError("Y-coordinate must be non-negative")
+            if type(y) is not int:
+                raise TypeError("y must be an integer")
+            if y < 0:
+                raise ValueError("y must be >= 0")
             self.__y = value
