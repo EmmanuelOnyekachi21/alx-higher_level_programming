@@ -5,6 +5,7 @@
 import unittest
 from models.base import Base
 
+
 class TestBase(unittest.TestCase):
     """
     Test cases for the Base class.
