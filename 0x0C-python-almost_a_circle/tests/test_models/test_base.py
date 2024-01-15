@@ -17,7 +17,7 @@ class TestBase(unittest.TestCase):
         b = Base(5)
         self.assertEqual(b.id, 5)
 
-    def test_creation_without_id(self):
+    def test_mix_creation(self):
         """
         Test if Base increments and assigns ids properly when created without
         providing an id
@@ -25,27 +25,11 @@ class TestBase(unittest.TestCase):
         b1 = Base()
         b2 = Base()
         b3 = Base()
-        b4 = Base()
+        b4 = Base(12)
+        b5 = Base()
 
-        self.assertEqual(b1.id, 1)
-        self.assertEqual(b2.id, 2)
-        self.assertEqual(b3.id, 3)
-        self.assertEqual(b4.id, 4)
+        self.assertEqual((b1.id, b2.id, b3.id, b4.id, b5.id), (1, 2, 3, 12, 4))
 
-    def test_mix_creation(self):
-        """
-        Test a combination of creating instances with and without ids,
-        ensuring correct incrementation and assignment of ids.
-        """
-        b1 = Base()
-        b2 = Base(10)
-        b3 = Base()
-        b4 = Base(20)
-
-        self.assertEqual(b1.id, 1)
-        self.assertEqual(b2.id, 10)
-        self.assertEqual(b3.id, 2)
-        self.assertEqual(b4.id, 20)
 
 if __name__ == "__main__":
     unittest.main()
