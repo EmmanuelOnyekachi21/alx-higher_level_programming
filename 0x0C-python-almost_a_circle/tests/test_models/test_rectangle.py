@@ -54,6 +54,42 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(a.y, 0)
         self.assertEqual(a.id, 12)
 
+    def test_invalid_width(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(-10, 2)
+
+    def test_invalid_height(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, -2)
+
+    def test_invalid_x(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 2, -5, 3)
+
+    def test_invalid_y(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 2, 5, -3)
+
+    def test_type_error(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(10.25, "hu", 4, 6, 20)
+    def test_invalid_x_value(self):
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(10, 2)
+            r.x = -5
+        self.assertEqual(str(context.exception), "x must be >= 0")
+
+    def test_invalid_y_type(self):
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(10, 2)
+            r.y = {}
+        self.assertEqual(str(context.exception), "y must be an integer")
+
+    def test_invalid_y_value(self):
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(10, 2)
+            r.y = -3
+        self.assertEqual(str(context.exception), "y must be >= 0")
 
 if __name__ == "__main__":
     unittest.main()
