@@ -127,6 +127,20 @@ class TestRectangle(unittest.TestCase):
         r.update(6, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (6) 4/5 - 2/3")
 
+    def test_update_method_with_keyword_arguments(self):
+        r = Rectangle(1, 1, 1, 1, 1)
+        # Check the initial state
+        self.assertEqual(str(r), "[Rectangle] (1) 1/1 - 1/1")
+        # Test the update method with keyword arguments
+        r.update(height=2)
+        self.assertEqual(str(r), "[Rectangle] (1) 1/1 - 1/2")
+        r.update(width=2, x=3)
+        self.assertEqual(str(r), "[Rectangle] (1) 3/1 - 2/2")
+        r.update(y=4, width=5, x=6, id=7)
+        self.assertEqual(str(r), "[Rectangle] (7) 6/4 - 5/2")
+        r.update(x=8, height=9, y=10, width=11)
+        self.assertEqual(str(r), "[Rectangle] (7) 8/10 - 11/9")
+
 
 if __name__ == "__main__":
     unittest.main()
