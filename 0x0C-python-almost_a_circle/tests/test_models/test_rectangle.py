@@ -111,6 +111,22 @@ class TestRectangle(unittest.TestCase):
         r2 = Rectangle(5, 5, 1)
         self.assertEqual(str(r2), "[Rectangle] (8) 1/0 - 5/5")
 
+    def test_update_with_valid_args(self):
+        r1 = Rectangle(10, 10, 10, 10)
+        self.assertEqual(str(r1), "[Rectangle] (9) 10/10 - 10/10")
+        # Test the update method with different sets of arguments
+        r = Rectangle(1, 1, 1, 1, 1)
+        r.update(2)
+        self.assertEqual(str(r), "[Rectangle] (2) 1/1 - 1/1")
+        r.update(3, 2)
+        self.assertEqual(str(r), "[Rectangle] (3) 1/1 - 2/1")
+        r.update(4, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (4) 1/1 - 2/3")
+        r.update(5, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (5) 4/1 - 2/3")
+        r.update(6, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (6) 4/5 - 2/3")
+
 
 if __name__ == "__main__":
     unittest.main()
