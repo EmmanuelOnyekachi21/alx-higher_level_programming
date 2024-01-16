@@ -73,6 +73,7 @@ class TestRectangle(unittest.TestCase):
     def test_type_error(self):
         with self.assertRaises(TypeError):
             r = Rectangle(10.25, "hu", 4, 6, 20)
+
     def test_invalid_x_value(self):
         with self.assertRaises(ValueError) as context:
             r = Rectangle(10, 2)
@@ -94,7 +95,7 @@ class TestRectangle(unittest.TestCase):
     def test_area(self):
         r1 = Rectangle(3, 2)
         self.assertEqual(r1.area(), 6)
-        
+
         r2 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r2.area(), 56)
 
@@ -102,6 +103,13 @@ class TestRectangle(unittest.TestCase):
         a = Rectangle(5, 4, 1, 1)
         a.width = 6
         self.assertEqual(a.area(), 24)
+
+    def test_str(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
+
+        r2 = Rectangle(5, 5, 1)
+        self.assertEqual(str(r2), "[Rectangle] (8) 1/0 - 5/5")
 
 
 if __name__ == "__main__":
