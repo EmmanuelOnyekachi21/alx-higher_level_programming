@@ -29,23 +29,13 @@ class Square(Rectangle):
 
     @property
     def size(self):
-        return self.width
+        """updates the value of size which is the width and height of parent
+
+        size must be an integer and be greater than 0 else a TypeError and
+        Valueerror is raised respectively.
+        """
+        return super().width
 
     @size.setter
     def size(self, value):
-        """
-        Setter for the y attribute.
-
-        Args:
-            value (int): New value for the width and height.
-        Raises:
-            TypeError: If the value is not an integer.
-            ValueError: If value is < 0
-
-        """
-        if not isinstance(value, int):
-            raise TypeError("value must be an integer")
-        if value < 0:
-            raise ValueError("value must be >= 0")
-        self.width = value
-        self.height = value
+        super().update(width=size, height=size)
