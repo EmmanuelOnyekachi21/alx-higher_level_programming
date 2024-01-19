@@ -34,8 +34,9 @@ class Square(Rectangle):
         size must be an integer and be greater than 0 else a TypeError and
         Valueerror is raised respectively.
         """
-        return super().width
+        return self.width
 
     @size.setter
     def size(self, value):
-        super().update(width=size, height=size)
+        self.width = value
+        self.height = value
