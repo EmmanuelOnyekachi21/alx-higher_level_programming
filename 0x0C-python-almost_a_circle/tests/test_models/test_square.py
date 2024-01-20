@@ -40,6 +40,25 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             s1.size = "9"
 
+    def test_square_update_method_args(self):
+        s1 = Square(5)
+        s1.update(10)
+        self.assertEqual(s1.id, 10)
+
+    def test_square_update_method_args_multiple(self):
+        s1 = Square(5)
+        s1.update(1, 2, 3, 4)
+        self.assertEqual(s1.id, 1)
+        self.assertEqual(s1.size, 2)
+        self.assertEqual(s1.x, 3)
+        self.assertEqual(s1.y, 4)
+
+    def test_square_upodate_method_kwargs(self):
+        s1 = Square(5)
+        s1.update(size=7, y=1)
+        self.assertEqual(s1.size, 7)
+        self.assertEqual(s1.y, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
