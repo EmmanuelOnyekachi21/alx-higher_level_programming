@@ -40,12 +40,10 @@ class Student:
             self: Referring to the object
             attrs: List of strings to be retrieved.
         """
-        if attrs:
-            output = {}
-            for item in attrs:
-                for key, value in self.__dict__.items():
-                    if key == item:
-                        output[item] = value
-            return output
-        else:
-            return self.__dict__
+        student_dict = self.__dict__
+
+        if attrs is not None:
+            # Filter attributes based on provided list
+            student_dict = {key: value for key, value in student_dict.items() if key in attrs}
+
+        return student_dict
