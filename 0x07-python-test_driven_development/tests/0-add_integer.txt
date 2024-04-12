@@ -83,3 +83,14 @@ Checking for string or any other datatype aside an integer or float.
         1000000000
         >>> add_integer(-999999999, -1)
         -1000000000
+
+::
+
+	>>> add_integer(0)
+        98
+        >>> add_integer(0, 0)
+        0
+        >>> add_integer(1, 0)
+        1
+        >>> add_integer(-1, 1)
+        0
