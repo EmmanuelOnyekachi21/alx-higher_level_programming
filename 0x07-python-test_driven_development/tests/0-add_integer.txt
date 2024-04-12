@@ -94,3 +94,12 @@ Checking for string or any other datatype aside an integer or float.
         1
         >>> add_integer(-1, 1)
         0
+
+::
+
+	>>> add_integer(123456789, -987654321)
+        -864197532
+        >>> add_integer(0.5, 0.6)
+        0
+        >>> add_integer(1e20, -1e20)
+        0
