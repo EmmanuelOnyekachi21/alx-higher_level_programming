@@ -58,3 +58,21 @@ Checking for string or any other datatype aside an integer or float.
 	... except Exception as e:
 	...    print(e)
 	name 'b' is not defined
+	
+::
+
+	>>> a = float("inf")
+	>>> b = 10
+	>>> add_integer(a, b)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+::
+
+	>>> add_integer(5.5, 2.5)
+        7
+        >>> add_integer(0.1, 0.2)
+        0
+        >>> add_integer(-10, -5)
+        -15
