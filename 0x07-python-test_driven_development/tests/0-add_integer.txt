@@ -50,3 +50,11 @@ Checking for string or any other datatype aside an integer or float.
 	... except Exception as e:
 	...    print(e)
 	name 'a' is not defined
+
+::
+
+	>>> try:
+	...    print(add_integer(4, b))
+	... except Exception as e:
+	...    print(e)
+	name 'b' is not defined
