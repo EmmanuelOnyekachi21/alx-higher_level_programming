@@ -13,5 +13,7 @@ class MyList(list):
 
     def print_sorted(self):
         """prints a sorted ascending format of the list."""
+        # Create a copy of the list to avoid modifying the original
         sorted_list = self.copy()
-        print(sorted(self))
+        sorted_list.sort(key=int)
+        print(sorted_list)
