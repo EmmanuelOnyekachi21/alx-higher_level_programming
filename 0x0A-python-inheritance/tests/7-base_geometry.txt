@@ -45,3 +45,7 @@ Next we try for expected errors
 ... except Exception as e:
 ... 	print("[{}] {}".format(e.__class__.__name__, e))
 [Exception] area() is not implemented
+>>> bg.integer_validator("size", -1.23456789)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
