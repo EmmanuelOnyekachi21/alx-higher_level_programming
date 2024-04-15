@@ -64,3 +64,9 @@ Next, Test for edge cases.
 	>>> my_list.print_sorted()
 	[7]
 
+::
+
+	>>> a = [1, 9, 4]
+	>>> my_list = MyList(a)
+	>>> my_list.print_sorted()
+	[1, 4, 9]
