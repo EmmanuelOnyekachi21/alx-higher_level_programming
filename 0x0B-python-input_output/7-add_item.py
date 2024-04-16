@@ -1,20 +1,15 @@
 #!/usr/bin/python3
-"""A module on using both load_json and save_json"""
 
 import json
 import sys
 
-save_json = __import__('5-save_to_json_file').save_to_json_file
-load_json = __import__('6-load_from_json_file').load_from_json_file
-arguments = sys.argv[1:]
-# print(arguments)
+save = __import__('5-save_to_json_file').save_to_json_file
+load = __import__('6-load_from_json_file').load_from_json_file
 
-filename = "add_item.json"
-
-try:
-    items = load_json(filename)
-except FileNotFoundError:
-    items = []
-
-items.extend(arguments)
-save_json(items, filename)
+filename = 'add_item.json'
+items = load(filename)
+if not filename:
+    items =[]
+else:
+    items += (sys.argv[1:])
+    save(items, filename)
