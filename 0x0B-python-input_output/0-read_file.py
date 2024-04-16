@@ -1,18 +1,7 @@
 #!/usr/bin/python3
-"""This module pprovides functions for reading files"""
-
+"""Documentation"""
 
 def read_file(filename=""):
-    """
-    Read the content of a text_file and print it to stdout.
-
-    Args:
-        filename (str): The name of the file to read.
-
-    Returns:
-        None.
-    """
-
-    with open(filename, "r", encoding="UTF-8") as f:
-        content = f.read()
-        print(content, end="")
+    """Document"""
+    with open(filename, encoding='utf-8') as file:
+        file.read()
