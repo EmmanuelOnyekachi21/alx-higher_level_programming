@@ -44,6 +44,10 @@ class Student:
 
         if attrs is not None:
             # Filter attributes based on provided list
-            student_dict = {key: value for key, value in student_dict.items() if key in attrs}
+            student_dict = {
+                    key:
+                    value for key,
+                    value in student_dict.items() if key in attrs
+                    }
 
         return student_dict
