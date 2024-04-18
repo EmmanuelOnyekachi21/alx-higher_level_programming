@@ -47,20 +47,74 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.y, 0)
         self.assertEqual(r1.id, 1)
 
-    def test_negative_values(self):
-        """Test case to ensure the class handles negative values correctly."""
-        r1 = Rectangle(-5, -10, -15, -20)
-        self.assertEqual(r1.width, -5)
-        self.assertEqual(r1.height, -10)
-        self.assertEqual(r1.x, -15)
-        self.assertEqual(r1.y, -20)
-        self.assertEqual(r1.id, 2)
-
     def test_zero_values(self):
         """Test case to ensure the class handles zero values correctly."""
-        r1 = Rectangle(0, 0, 0, 0)
-        self.assertEqual(r1.width, 0)
-        self.assertEqual(r1.height, 0)
-        self.assertEqual(r1.x, 0)
-        self.assertEqual(r1.y, 0)
-        self.assertEqual(r1.id, 3)
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(0, 0, 0, 0, 2)
+
+    def test_non_integer_width(self):
+        """Test case to ensure the class handles Exceptions correctly."""
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, "2")
+
+    def test_non_integer_height(self):
+        """test case to ensure the class handles exceptions correctly."""
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, "2")
+
+    def test_non_integer_x(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 2, {})
+
+    def test_non_integer_y(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 2, 5, [])
+
+    def test_width_less_than_zero(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(ValueError):
+            r = Rectangle(-10, 2)
+
+    def test_height_less_than_zero(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, -2)
+
+    def test_x_less_than_zero(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 2, -5)
+
+    def test_y_less_than_zero(self):
+        """Test case to ensure that the class handles Exceptions correctly."""
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 2, 5, -3)
+
+    def test_invalid_id_type(self):
+        """
+        Test if providing a non-integer value for ID doesn't raise an
+        exception.
+        """
+        r = Rectangle(10, 2, 5, 6, "3")
+        self.assertEqual(r.id, "3")
+
+        r = Rectangle(10, 2, 3, 5, 3.9)
+        self.assertEqual(r.id, 3.9)
+
+    def test_min_integer_values(self):
+        """Test with minimum possible integer values."""
+        r = Rectangle(1, 1, 0, 0)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 1)
+        self.assertEqual(r.x, 0)
+        self.assertEqual(r.y, 0)
+
+    def test_max_integer_values(self):
+        """Test with maximum possible integer values."""
+        r = Rectangle(2147483647, 2147483647, 2147483647, 2147483647)
+        self.assertEqual(r.width, 2147483647)
+        self.assertEqual(r.height, 2147483647)
+        self.assertEqual(r.x, 2147483647)
+        self.assertEqual(r.y, 2147483647)
