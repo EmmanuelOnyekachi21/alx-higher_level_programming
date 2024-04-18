@@ -9,9 +9,18 @@ class TestBaseClass(unittest.TestCase):
     """
     A base class for unit tests.
 
-    This class inherits from unittest.TestCase and serves as a base class for writing unit tests in the test suite. It provides common functionalities and setups reequired for testing various components of the system.
+    This class inherits from unittest.TestCase and serves as a base class
+    for writing unit tests in the test suite. It provides common
+    functionalities and setups reequired for testing various
+    components of the system.
 
     Methods(s):
+        test_empty:             Test when no value is provided.
+        test_positive_id:       when id is +ve
+        test_negative_id:       When id = -ve
+        test_large_id:          Test with a large positive id value.
+        test_zero_id:           Test with id value of zero.
+        test_none_id:           Test with id value as None.
     """
     def test_empty(self):
         """Test when no value is provided."""
