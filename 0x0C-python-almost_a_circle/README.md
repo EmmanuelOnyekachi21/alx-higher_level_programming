@@ -50,4 +50,4 @@ This command will automatically discover and run all the test defined in the `te
 This project was developed by [Emmanuel Onyekachi] with guidance from [ALX Holberton School](https://www.alxafrica.com/)
 
 ## Acknowledgement
-Special thanks to [ALX Holberton School] (https://www.alxafrica.com/) for their contributions and support during the development of this project.
+Special thanks to [ALX Holberton School](https://www.alxafrica.com/) for their contributions and support during the development of this project.
