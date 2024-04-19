@@ -221,3 +221,24 @@ class TestRectangle(unittest.TestCase):
         expected = "[Rectangle] (10) 0/0 - 2/1\n"
         print(b)
         self.assertEqual(captured_output.getvalue(), expected)
+
+        # Reset stdout
+        sys.stdout = sys.__stdout__
+
+    def test_display(self):
+        """Testing the `display` method of the Rectangle class."""
+        r = Rectangle(3, 2, 1, 1)
+        captured = StringIO()
+        sys.stdout = captured
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured.getvalue(), "\n ###\n ###\n")
+
+    def test_display_no_offset(self):
+        """Test the display() method of the Rectangle class with no offset."""
+        r = Rectangle(3, 2, 0, 0)
+        captured = StringIO()
+        sys.stdout = captured
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured.getvalue(), "###\n###\n")
