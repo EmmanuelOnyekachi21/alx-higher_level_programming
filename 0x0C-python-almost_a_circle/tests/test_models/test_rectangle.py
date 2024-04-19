@@ -242,3 +242,71 @@ class TestRectangle(unittest.TestCase):
         r.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured.getvalue(), "###\n###\n")
+
+class TestRectangleUpdate(unittest.TestCase):
+    """A class to check the correctness of the `update()` method."""
+    def test_update_with_id(self):
+        """Testing with id"""
+        z = Rectangle(2, 3, 4, 5, 8)
+        captured = StringIO()
+        sys.stdout = captured
+        print(z)
+        self.assertEqual(captured.getvalue(), "[Rectangle] (8) 4/5 - 2/3\n")
+
+        captured.truncate(0)
+        captured.seek(0)
+
+        sys.stdout = sys.__stdout__
+
+        z.update(89)
+        captured = StringIO()
+        sys.stdout = captured
+        print(z)
+        self.assertEqual(captured.getvalue(), "[Rectangle] (89) 4/5 - 2/3\n")
+
+        captured.truncate(0)
+        captured.seek(0)
+
+        sys.stdout = sys.__stdout__
+
+        z.update(89, 1, 5)
+        captured = StringIO()
+        sys.stdout = captured
+        print(z)
+        self.assertEqual(captured.getvalue(), "[Rectangle] (89) 4/5 - 1/5\n")
+
+        captured.truncate(0)
+        captured.seek(0)
+
+        sys.stdout = sys.__stdout__
+
+        z.update(89, 5, 10, 12)
+        captured = StringIO()
+        sys.stdout = captured
+        print(z)
+        self.assertEqual(captured.getvalue(), "[Rectangle] (89) 12/5 - 5/10\n")
+
+        captured.truncate(0)
+        captured.seek(0)
+
+        sys.stdout = sys.__stdout__
+
+        with self.assertRaises(TypeError):
+            z.update(89, "t")
+
+        with self.assertRaises(TypeError):
+            z.update(89, 5, 10.4)
+
+    def test_update_name_errors(self):
+        """Testing name errors with the update() method."""
+        y = Rectangle(2, 3, 5)
+        with self.assertRaises(NameError):
+            y.update(t)
+
+    def test_update_with_negative_values(self):
+        """Test the update() method with negative values."""
+        y = Rectangle(1, 2)
+        y.update(15)
+        self.assertEqual(y.id, 15)
+        with self.assertRaises(ValueError):
+            y.update(15, 1, 2, -3)

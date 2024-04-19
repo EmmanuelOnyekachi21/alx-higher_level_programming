@@ -159,10 +159,14 @@ class Rectangle(Base):
         Returns:
             None
         """
-        for arg in args:
+        length = len(args)
+        if length >= 1:
             self.id = args[0]
-        self.width = args[1]
-        self.height = args[2]
-        self.x = args[3]
-        self.y = args[4]
-
+        if length >= 2:
+            self.width = args[1]
+        if length >= 3:
+            self.height = args[2]
+        if length >= 4:
+            self.x = args[3]
+        if length >= 5:
+            self.y = args[4]
