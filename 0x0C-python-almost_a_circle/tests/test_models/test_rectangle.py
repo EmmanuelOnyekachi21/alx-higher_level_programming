@@ -40,12 +40,30 @@ class TestRectangle(unittest.TestCase):
 
     def test_initialize_some(self):
         """Test case to ensure some attributes are initialized properly."""
-        r1 = Rectangle(15, 30, 46)
-        self.assertEqual(r1.width, 15)
-        self.assertEqual(r1.height, 30)
-        self.assertEqual(r1.x, 46)
-        self.assertEqual(r1.y, 0)
-        self.assertEqual(r1.id, 1)
+        r = Rectangle(15, 30, 46)
+        self.assertEqual(r.width, 15)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 46)
+        self.assertEqual(r.y, 0)
+        self.assertEqual(r.id, 2)
+
+        a = Rectangle(2, 4)
+        self.assertEqual(a.width, 2)
+        self.assertEqual(a.height, 4)
+        self.assertEqual(a.x, 0)
+        self.assertEqual(a.y, 0)
+        self.assertEqual(a.id, 3)
+
+        with self.assertRaises(TypeError):
+            b = Rectangle(2)
+
+    def test_exceeding_arguments(self):
+        """
+        Test case for when arguments provided to Rectangle exceeds
+        the required arguments
+        """
+        with self.assertRaises(TypeError):
+            r = Rectangle(2, 3, 5, 6, 7, 8)
 
     def test_zero_values(self):
         """Test case to ensure the class handles zero values correctly."""
@@ -118,3 +136,41 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 2147483647)
         self.assertEqual(r.x, 2147483647)
         self.assertEqual(r.y, 2147483647)
+
+    def test_possible_name_errors(self):
+        """
+        Test case for possible name errors.
+        """
+        with self.assertRaises(NameError):
+            a = Rectangle(2, t)
+
+        with self.assertRaises(NameError):
+            b = Rectangle(r, 4)
+
+    def test_area(self):
+        """Test the Area method in models.rectangle."""
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+        r2 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r2.area(), 56)
+
+    def test_non_integer_dimensions(self):
+        """
+        Test case to ensure area method handles rectangles with non-integer
+        dimensions.
+        """
+        with self.assertRaises(TypeError):
+            r = Rectangle(3, "2")
+        with self.assertRaises(TypeError):
+            r = Rectangle("3", 2)
+
+        with self.assertRaises(TypeError):
+            r = Rectangle("3", "2")
+    def test_non_integer_coordinates(self):
+        """Test case to ensure area method handles non-integer coordinates."""
+        with self.assertRaises(TypeError):
+            r = Rectangle(3, 2, "x", 0)
+
+        with self.assertRaises(TypeError):
+            r = Rectangle(3, 2, 0, "y")

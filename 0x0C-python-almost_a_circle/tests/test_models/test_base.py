@@ -61,6 +61,11 @@ class TestBaseClass(unittest.TestCase):
         b6 = Base(None)
         self.assertEqual(b6.id, 4)
 
+    def test_assertRaise(self):
+        """Test areas where TypeErrors might occur."""
+        with self.assertRaises(TypeError):
+            a = Base(1, 3, 4, 5)
+
 
 if __name__ == "__main__":
     unittest.main()
