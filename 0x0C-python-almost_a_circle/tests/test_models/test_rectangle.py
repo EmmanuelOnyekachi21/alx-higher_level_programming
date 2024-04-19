@@ -10,6 +10,8 @@ covering various scenarios and edge cases.
 
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
@@ -45,7 +47,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 46)
         self.assertEqual(r.y, 0)
-        self.assertEqual(r.id, 2)
+        self.assertEqual(r.id, 4)
 
         a = Rectangle(2, 4)
         self.assertEqual(a.width, 2)
@@ -174,3 +176,27 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             r = Rectangle(3, 2, 0, "y")
+
+    def test_display(self):
+        """
+        Test the output of the `Display` method of the `Rectangle` class.
+        """
+        # Redirect stdout to capture print output.
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        a = Rectangle(4, 3)
+        expected_output = "####\n####\n####\n"
+        a.display()
+        self.assertEqual(captured_output.getvalue(), expected_output)
+        
+        captured_output.truncate(0)
+        captured_output.seek(0)
+
+        r2 = Rectangle(2, 2)
+        expected_output = "##\n##\n"
+        r2.display()
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+        # Reset stdout
+        sys.stdout = sys.__stdout__
