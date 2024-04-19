@@ -54,7 +54,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(a.height, 4)
         self.assertEqual(a.x, 0)
         self.assertEqual(a.y, 0)
-        self.assertEqual(a.id, 3)
+        self.assertEqual(a.id, 5)
+
+        c = Rectangle(1, 2, id=200)
+        self.assertEqual(c.id, 200)
 
         with self.assertRaises(TypeError):
             b = Rectangle(2)
@@ -200,3 +203,21 @@ class TestRectangle(unittest.TestCase):
 
         # Reset stdout
         sys.stdout = sys.__stdout__
+
+    def test_str(self):
+        """Test the __str__ method"""
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        a = Rectangle(4, 6, 2, 1, 12)
+        expected_output = "[Rectangle] (12) 2/1 - 4/6\n"
+        print(a)
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+        captured_output.truncate(0)
+        captured_output.seek(0)
+
+        b = Rectangle(2, 1, id=10)
+        expected = "[Rectangle] (10) 0/0 - 2/1\n"
+        print(b)
+        self.assertEqual(captured_output.getvalue(), expected)
