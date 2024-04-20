@@ -310,3 +310,39 @@ class TestRectangleUpdate(unittest.TestCase):
         self.assertEqual(y.id, 15)
         with self.assertRaises(ValueError):
             y.update(15, 1, 2, -3)
+
+class TestRectangleUpdate(unittest.TestCase):
+    """A class for unit tests of the Rectangle class update() method."""
+
+    def setUp(self):
+        """Set up a Rectangle instance before each test."""
+        self.r1 = Rectangle(10, 20, 30, 40, 50)
+
+    def test_update_with_args(self):
+        """Test updating attributes with positional arguments."""
+        self.r1.update(1, 2, 3, 4, 5)
+
+        self.assertEqual(self.r1.id, 1)
+        self.assertEqual(self.r1.width, 2)
+        self.assertEqual(self.r1.height, 3)
+        self.assertEqual(self.r1.x, 4)
+        self.assertEqual(self.r1.y, 5)
+
+    def test_update_with_kwargs(self):
+        """Test updating attributes with keyword arguments."""
+        self.r1.update(width=15, height=25, x=35, y=45)
+        self.assertEqual(self.r1.width, 15)
+        self.assertEqual(self.r1.height, 25)
+        self.assertEqual(self.r1.x, 35)
+        self.assertEqual(self.r1.y, 45)
+    
+    def test_update_with_both_args_and_kwargs(self):
+        """
+        Test updating attributes with both positional and keyword arguments.
+        """
+        self.r1.update(1, 2, 3, 4, 5, width=15, height=25, x=35, y=45)
+        self.assertEqual(self.r1.id, 1)
+        self.assertEqual(self.r1.width, 2)  # Args take precedence
+        self.assertEqual(self.r1.height, 3)
+        self.assertEqual(self.r1.x, 4)
+        self.assertEqual(self.r1.y, 5)
