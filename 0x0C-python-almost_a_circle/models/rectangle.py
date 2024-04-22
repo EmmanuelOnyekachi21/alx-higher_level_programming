@@ -131,7 +131,7 @@ class Rectangle(Base):
         """
         Returns a string representation of the Rectangle instance.
 
-        The string representation includes information about the Rectangle's 
+        The string representation includes information about the Rectangle's
         attributes, such as its ID, position (x, y), width, and height.
 
         Returns:
@@ -152,7 +152,7 @@ class Rectangle(Base):
         Args:
             *args (tuple) : A tuple of arguments (optional, ignored if empty.)
                 - 1st argument: id
-                - 2nd argument: width 
+                - 2nd argument: width
                 - 3rd argument: height
                 - 4th argument: x
                 - 5th argument: y
@@ -172,7 +172,7 @@ class Rectangle(Base):
             self._process_args(*args)
         else:
             self._process_kwargs(**kwargs)
-    
+
     def _process_kwargs(self, **kwargs):
         """This helper method is called if args is empty."""
         attributes = {'id', 'width', 'height', 'x', 'y'}

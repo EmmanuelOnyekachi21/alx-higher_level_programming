@@ -172,6 +172,7 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             r = Rectangle("3", "2")
+
     def test_non_integer_coordinates(self):
         """Test case to ensure area method handles non-integer coordinates."""
         with self.assertRaises(TypeError):
@@ -192,7 +193,7 @@ class TestRectangle(unittest.TestCase):
         expected_output = "####\n####\n####\n"
         a.display()
         self.assertEqual(captured_output.getvalue(), expected_output)
-        
+
         captured_output.truncate(0)
         captured_output.seek(0)
 
@@ -242,6 +243,7 @@ class TestRectangle(unittest.TestCase):
         r.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured.getvalue(), "###\n###\n")
+
 
 class TestRectangleUpdate(unittest.TestCase):
     """A class to check the correctness of the `update()` method."""
@@ -311,6 +313,7 @@ class TestRectangleUpdate(unittest.TestCase):
         with self.assertRaises(ValueError):
             y.update(15, 1, 2, -3)
 
+
 class TestRectangleUpdate(unittest.TestCase):
     """A class for unit tests of the Rectangle class update() method."""
 
@@ -335,7 +338,7 @@ class TestRectangleUpdate(unittest.TestCase):
         self.assertEqual(self.r1.height, 25)
         self.assertEqual(self.r1.x, 35)
         self.assertEqual(self.r1.y, 45)
-    
+
     def test_update_with_both_args_and_kwargs(self):
         """
         Test updating attributes with both positional and keyword arguments.
