@@ -1,6 +1,4 @@
 #!/usr/python3
-
-from models.base import Base
 """
 This module defines the Rectangle class.
 
@@ -11,6 +9,8 @@ It encapsulates attributes such as:
 
 width, height, x-coordinate, and y-coordinate.
 """
+
+from models.base import Base
 
 
 class Rectangle(Base):
