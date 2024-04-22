@@ -14,7 +14,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-     """
+    """
     Represemtation of a rectangle in the xy-plane.
 
     Attrbutes:
