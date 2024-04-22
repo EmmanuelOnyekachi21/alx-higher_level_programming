@@ -146,3 +146,58 @@ class Rectangle(Base):
                 f"{self.x}/{self.y} - "
                 f"{self.width}/{self.height}"
                 )
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the attributes of the rectangle object with the provided
+        arguments.
+
+        Args:
+            *args (tuple) : A tuple of arguments (optional, ignored if empty.)
+                - 1st argument: id
+                - 2nd argument: width
+                - 3rd argument: height
+                - 4th argument: x
+                - 5th argument: y
+
+            **kwargs (dict): A dictionary of key-value arguments to update
+                                attributes.
+                - id : The id attribute.
+                - width: The width atribute.
+                - height: The height attribute.
+                - x: The x-coordinate
+                - y: The y-coordinate.
+
+        Returns:
+            None
+        """
+        if args:
+            self._process_args(*args)
+        else:
+            self._process_kwargs(**kwargs)
+
+    def _process_kwargs(self, **kwargs):
+        """This helper method is called if args is empty."""
+        attributes = {'id', 'width', 'height', 'x', 'y'}
+        for key, value in kwargs.items():
+            if key in attributes:
+                setattr(self, key, value)
+
+    def _process_args(self, *args):
+        """This helper method is called if args is provided in the update()
+            method.
+        """
+        args_list = ['id', 'width', 'height', 'x', 'y']
+        for key, value in zip(args_list, args):
+            setattr(self, key, value)
+        # ANOTHER WAY
+        # if length >= 1:
+        #     self.id = args[0]
+        # if length >= 2:
+        #     self.width = args[1]
+        # if length >= 3:
+        #     self.height = args[2]
+        # if length >= 4:
+        #     self.x = args[3]
+        # if length >= 5:
+        #     self.y = args[4]
