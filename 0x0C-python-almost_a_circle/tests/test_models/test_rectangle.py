@@ -349,3 +349,40 @@ class TestRectangleUpdate(unittest.TestCase):
         self.assertEqual(self.r1.height, 3)
         self.assertEqual(self.r1.x, 4)
         self.assertEqual(self.r1.y, 5)
+
+
+class TestRectangle_to_dictionary(unittest.TestCase):
+    """
+    Test cases for the Rectangle class focusing on the to_dictionary method.
+    """
+    def test_to_dictionary_empty(self):
+        """
+        Tests the to_dictionary method with an empty rectangle (no arguments).
+        """
+        r = Rectangle(1, 2)
+        expected_dict = {
+            "id": 9,
+            "width": 1,
+            "height": 2,
+            "x": 0,
+            "y": 0
+            }
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_dictionary_with_args(self):
+        """
+        Tests the to_dictionary method with arguments
+        passed to the constructor.
+        """
+        r = Rectangle(10, 2, 1, 9, 5)
+        expected_dict = {"id": 5, "width": 10, "height": 2, "x": 1, "y": 9}
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_dictionary_after_update(self):
+        """
+        Tests the to_dictionary method after updating the rectangle attributes.
+        """
+        r = Rectangle(5, 3)
+        r.update(width=8, height=4, x=2, y=1)
+        expected_dict = {"id": 8, "width": 8, "height": 4, "x": 2, "y": 1}
+        self.assertEqual(r.to_dictionary(), expected_dict)

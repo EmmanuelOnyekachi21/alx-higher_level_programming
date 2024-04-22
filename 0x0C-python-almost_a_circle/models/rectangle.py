@@ -198,3 +198,20 @@ class Rectangle(Base):
         #     self.x = args[3]
         # if length >= 5:
         #     self.y = args[4]
+
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Rectangle.
+
+        Returns:
+            dict: A dictionary containing the rectangle's attributes
+            as key-value pairs.
+        """
+
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y,
+            }
