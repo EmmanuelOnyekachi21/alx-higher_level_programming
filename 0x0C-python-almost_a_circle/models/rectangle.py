@@ -13,17 +13,30 @@ width, height, x-coordinate, and y-coordinate.
 from models.base import Base
 
 
-
 class Rectangle(Base):
-    """subclass Rectangle"""
+        """
+    Represemtation of a rectangle in the xy-plane.
+
+    Attrbutes:
+        width (int):        The width of the rectangle.
+        height (int):       The height of the rectangle.
+        x (int):            The x-coordinate.
+        y (int):            The y-coordinate.
+    """
+
     def __init__(self, width, height, x=0, y=0, id=None):
-        """initialize instance attributes
+        """
+        Initializes a Rectangle object.
+
         Args:
-            width (int): width
-            height (int): height
-            x (int) = x
-            y (int) = y
-            id (int) = id
+            width (int):        The width of the rectangle.
+            height (int):       The height of the rectangle.
+            x (int):            The x-coordinate.
+            y (int):            The y-coordinate.
+            id (int):           Unique identifier of the rectangle.
+
+        Returns:
+            None
         """
         self.width = width
         self.height = height
