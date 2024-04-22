@@ -1,7 +1,17 @@
 #!/usr/bin/python3
-"""This is a Rectangle class"""
+"""
+This module defines the Rectangle class.
+
+The Rectangle class inherits from the BAse class and represents a geometric
+rectangle.
+
+It encapsulates attributes such as:
+
+width, height, x-coordinate, and y-coordinate.
+"""
+
 from models.base import Base
-"""superclass Base"""
+
 
 
 class Rectangle(Base):
