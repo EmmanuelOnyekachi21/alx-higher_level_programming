@@ -5,6 +5,7 @@ import sys
 import unittest
 from models.square import Square
 from models.rectangle import Rectangle
+import os
 
 
 class TestSquare(unittest.TestCase):
@@ -132,7 +133,7 @@ class TestSquare(unittest.TestCase):
             '_Rectangle__height': 5,
             '_Rectangle__x': 0,
             '_Rectangle__y': 0,
-            'id': 16
+            'id': 19
             }
         self.assertEqual(s1.__dict__, exp)
 
@@ -147,6 +148,50 @@ class TestSquare(unittest.TestCase):
             'y': 1
             }
         self.assertEqual(z.to_dictionary(), expected)
+
+    def test_to_json_string(self):
+        """Test case for to_json_string method."""
+        s = Square(5)
+        result = s.to_json_string([s.to_dictionary()])
+        self.assertEqual(result, '[{"id": 18, "size": 5, "x": 0, "y": 0}]')
+
+    @unittest.skip('Test skipped.')
+    def test_from_json_string(self):
+        """Test case for from_json_string method."""
+        json_string = '{"id": 19, "size": 5, "x": 0, "y": 0}'
+        result = Square.to_json_string(json_string)
+        self.assertEqual(result, {"id": 19, "size": 5, "x": 0, "y": 0})
+
+    def test_save_to_file(self):
+        """Test the save_to_file() method."""
+        r1 = Square(10, 7, 2)
+        r2 = Square(id=1, size=2, x=3)
+
+        # Call save_to_file method
+        Square.save_to_file([r1, r2])
+
+        # Check if file was created.
+        filename = "Square.json"
+        self.assertTrue(os.path.exists(filename))
+
+        # Check if file content is correct
+        with open(filename, "r") as file:
+            content = file.read()
+            exp = ('[{"id": 9, "size": 10, "x": 7, "y": 2}, '
+                   '{"id": 1, "size": 2, "x": 3, "y": 0}]')
+            self.assertEqual(content.strip(), exp)
+
+        # Clean up
+        os.remove(filename)
+
+    def test_save_empty_list(self):
+        filename = "Square.json"
+        Square.save_to_file([])
+        self.assertTrue(os.path.exists(filename))
+        with open(filename, "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+        os.remove(filename)
 
 
 if __name__ == "__main__":

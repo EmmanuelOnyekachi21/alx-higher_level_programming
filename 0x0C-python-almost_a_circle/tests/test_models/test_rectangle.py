@@ -12,6 +12,7 @@ import unittest
 from models.rectangle import Rectangle
 from io import StringIO
 import sys
+import os
 
 
 class TestRectangle(unittest.TestCase):
@@ -386,3 +387,115 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         r.update(width=8, height=4, x=2, y=1)
         expected_dict = {"id": 8, "width": 8, "height": 4, "x": 2, "y": 1}
         self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_json_string_method(self):
+        """Test the to_json_string() method."""
+
+    def test_to_json_string(self):
+        """Test case for to_json_string method."""
+        r = Rectangle(5, 10)
+        result = r.to_json_string([r.to_dictionary()])
+        self.assertEqual(
+            result,
+            '[{"id": 10, "width": 5, "height": 10, "x": 0, "y": 0}]')
+
+    def test_save_to_file(self):
+        """Test the save_to_file() method."""
+        r1 = Rectangle(10, 7, 2, 8, 6)
+        r2 = Rectangle(id=1, height=2, width=3)
+
+        # Call save_to_file method
+        Rectangle.save_to_file([r1, r2])
+
+        # Check if file was created.
+        filename = "Rectangle.json"
+        self.assertTrue(os.path.exists(filename))
+
+        # Check if file content is correct
+        with open(filename, "r") as file:
+            content = file.read()
+            exp = ('[{"id": 6, "width": 10, "height": 7, "x": 2, "y": 8}, '
+                   '{"id": 1, "width": 3, "height": 2, "x": 0, "y": 0}]')
+            self.assertEqual(content.strip(), exp)
+
+        # Clean up
+        os.remove(filename)
+
+    def test_save_empty_list(self):
+        filename = "Rectangle.json"
+        Rectangle.save_to_file([])
+        self.assertTrue(os.path.exists(filename))
+        with open(filename, "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+        os.remove(filename)
+
+
+class TestFromJSONString(unittest.TestCase):
+    """Test cases for the from_json_string() method."""
+
+    def test_rectangle_from_json_string(self):
+        """Test the from_json_string() method for the Rectangle class."""
+
+        list_input = [
+                {'id': 89, 'width': 10, 'height': 4},
+                {'id': 7, 'width': 1, 'height': 7}
+                ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(type(list_output), list)
+        self.assertEqual(list_output, list_input)
+
+    def test_rectangle_empty_list(self):
+        """Test with an empty string."""
+        self.assertEqual(Rectangle.from_json_string([]), [])
+
+    def test_zero_attributes(self):
+        """Test with '0' attributes."""
+        json_string = (
+            '[{"id": 1, "width": 0, "height": 0, "x": 0, "y": 0}]')
+        expected_output = (
+                [{'id': 1, 'width': 0, 'height': 0, 'x': 0, 'y': 0}])
+        self.assertEqual(
+                Rectangle.from_json_string(json_string),
+                expected_output)
+
+    def test_negative_values(self):
+        """Testing negative values..."""
+        json_string = (
+                '[{"id": 1, "width": -10, "height": -5, "x": 0, "y": 0}]')
+        expected_output = (
+                [{'id': 1, 'width': -10, 'height': -5, 'x': 0, 'y': 0}])
+        self.assertEqual(
+                Rectangle.from_json_string(json_string),
+                expected_output)
+
+    def test_large_values(self):
+        """Test Large Values."""
+        json_string = (
+                '[{"id": 1, "width": 10000, "height": 5000, "x": 0, "y": 0}]')
+        expected_output = (
+                [{'id': 1, 'width': 10000, 'height': 5000, 'x': 0, 'y': 0}])
+        self.assertEqual(
+                Rectangle.from_json_string(json_string), expected_output)
+
+    def test_rectangle_non_integer_values(self):
+        """Testing with non-integer values..."""
+        json_string = (
+                '[{"id": 1, "width": 10.5, "height": 5.5, "x": 0, "y": 0}]')
+        expected_output = (
+                [{'id': 1, 'width': 10.5, 'height': 5.5, 'x': 0, 'y': 0}])
+        self.assertEqual(
+                Rectangle.from_json_string(json_string), expected_output)
+
+    def test_rectangle_missing_keys(self):
+        """Test with missing keys."""
+        json_string = '[{"id": 1, "width": 10, "x": 0, "y": 0}]'
+        expected_output = (
+                [{'id': 1, 'width': 10, 'x': 0, 'y': 0}])
+        self.assertEqual(
+                Rectangle.from_json_string(json_string), expected_output)
+
+
+if __name__ == "__main__":
+    unittest.main()

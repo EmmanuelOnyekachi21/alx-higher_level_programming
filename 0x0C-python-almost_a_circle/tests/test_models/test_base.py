@@ -66,6 +66,22 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             a = Base(1, 3, 4, 5)
 
+    def test_to_json(self):
+        """Test to_json() method"""
+        r3 = Base(26)
+        json_dictionary = Base.to_json_string(r3.__dict__)
+        self.assertEqual(json_dictionary, '{"id": 26}')
+
+    def test_to_json_string_empty(self):
+        """Test case for an empty list of dictionaries."""
+        result = Base.to_json_string([])
+        self.assertEqual(result, "[]")
+
+    def test_to_json_string_none(self):
+        """Test case for a None input."""
+        result = Base.to_json_string(None)
+        self.assertEqual(result, "[]")
+
 
 if __name__ == "__main__":
     unittest.main()
