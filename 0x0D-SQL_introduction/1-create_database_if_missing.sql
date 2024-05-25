@@ -1,0 +1,3 @@
+-- Creates a database named `hbtn_0c_0`
+-- Command to create database
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0
