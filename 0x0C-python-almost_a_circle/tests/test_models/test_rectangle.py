@@ -48,14 +48,14 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 46)
         self.assertEqual(r.y, 0)
-        self.assertEqual(r.id, 4)
+        self.assertEqual(r.id, 5)
 
         a = Rectangle(2, 4)
         self.assertEqual(a.width, 2)
         self.assertEqual(a.height, 4)
         self.assertEqual(a.x, 0)
         self.assertEqual(a.y, 0)
-        self.assertEqual(a.id, 5)
+        self.assertEqual(a.id, 6)
 
         c = Rectangle(1, 2, id=200)
         self.assertEqual(c.id, 200)
@@ -362,7 +362,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         """
         r = Rectangle(1, 2)
         expected_dict = {
-            "id": 9,
+            "id": 10,
             "width": 1,
             "height": 2,
             "x": 0,
@@ -385,7 +385,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         """
         r = Rectangle(5, 3)
         r.update(width=8, height=4, x=2, y=1)
-        expected_dict = {"id": 8, "width": 8, "height": 4, "x": 2, "y": 1}
+        expected_dict = {"id": 9, "width": 8, "height": 4, "x": 2, "y": 1}
         self.assertEqual(r.to_dictionary(), expected_dict)
 
     def test_to_json_string_method(self):
@@ -397,7 +397,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         result = r.to_json_string([r.to_dictionary()])
         self.assertEqual(
             result,
-            '[{"id": 10, "width": 5, "height": 10, "x": 0, "y": 0}]')
+            '[{"id": 11, "width": 5, "height": 10, "x": 0, "y": 0}]')
 
     def test_save_to_file(self):
         """Test the save_to_file() method."""
@@ -495,6 +495,19 @@ class TestFromJSONString(unittest.TestCase):
                 [{'id': 1, 'width': 10, 'x': 0, 'y': 0}])
         self.assertEqual(
                 Rectangle.from_json_string(json_string), expected_output)
+
+    def test_create(self):
+        """Test creatikng a Rectangle instance using the create class method.
+        """
+        rectangle_dict = {'id': 1, 'width': 5, 'height': 4, 'x': 2, 'y': 1}
+        r1 = Rectangle.create(**rectangle_dict)
+
+        # Check if the created instance has the correct attributes.
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 5)
+        self.assertEqual(r1.height, 4)
+        self.assertEqual(r1.x, 2)
+        self.assertEqual(r1.y, 1)
 
 
 if __name__ == "__main__":
