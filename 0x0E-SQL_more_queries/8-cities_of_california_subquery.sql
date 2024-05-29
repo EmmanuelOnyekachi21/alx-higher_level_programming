@@ -1,4 +1,4 @@
--- Select cities in california sorted by cities.id
+-- Select cities in California sorted by cities.id
 SELECT * FROM cities
-WHERE state_id = (SELECT id FROM states WHERE name = 'california')
+WHERE state_id = (SELECT id FROM states WHERE name = 'California')
 ORDER BY id ASC;
