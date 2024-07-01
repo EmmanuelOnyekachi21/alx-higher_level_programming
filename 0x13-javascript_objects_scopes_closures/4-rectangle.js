@@ -29,11 +29,11 @@ module.exports = class Rectangle {
    * Rotate the rectangle by exchanging width and height.
    */
   rotate () {
-    let temp = this.height;
+    const temp = this.height;
     this.height = this.width;
     this.width = temp;
   }
-  
+
   /**
    * Double the dimensions (width and height) of the rectangle.
    */
