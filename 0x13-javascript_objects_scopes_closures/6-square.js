@@ -5,15 +5,6 @@ const OldSquare = require('./5-square');
 
 module.exports = class Square extends OldSquare {
   /**
-   * Square class that inherits from OldSquare.
-   * @param {number} size - size of the square (both width and height).
-   */
-  constructor (size) {
-    // Call the constructor of OldSquare with size for both width and height
-    super(size);
-  }
-
-  /**
    * Print the square using the specified character or 'X' by default.
    * @param {string} c - Character to use for priinting (default is 'X').
    */
