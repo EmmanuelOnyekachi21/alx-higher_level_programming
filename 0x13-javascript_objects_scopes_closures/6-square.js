@@ -1,16 +1,16 @@
 #!/usr/bin/node
 // A class `Square` that defines a square and inherits from Rectangle of 4-rectangle.js
 
-const Rectangle = require('./4-rectangle');
+const OldSquare = require('./5-square');
 
-module.exports = class Square extends Rectangle {
+module.exports = class Square extends OldSquare {
   /**
-   * constructor for Square class.
+   * Square class that inherits from OldSquare.
    * @param {number} size - size of the square (both width and height).
    */
   constructor (size) {
-    // Call the constructor of Rectangle with size for both width and height
-    super(size, size);
+    // Call the constructor of OldSquare with size for both width and height
+    super(size);
   }
 
   /**
@@ -19,8 +19,10 @@ module.exports = class Square extends Rectangle {
    */
   charPrint (c) {
     if (c === undefined) {
-      c = 'X';
+      c = 'X'; // Default character
     }
+
+    // Print the square using the character c
     for (let i = 0; i < this.width; i++) {
       let line = '';
       for (let j = 0; j < this.height; j++) {
