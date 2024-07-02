@@ -6,7 +6,7 @@ let count = 0;
 
 /**
  * logMe - logs the number of arguments
- *          already printed and the 
+ *          already printed and the
  *          new argument value.
  * @param {*} item - The item to be logged.
  */
