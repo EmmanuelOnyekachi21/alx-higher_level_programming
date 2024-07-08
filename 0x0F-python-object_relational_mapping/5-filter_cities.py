@@ -33,20 +33,23 @@ if __name__ == '__main__':
     cursor = db.cursor()
 
     query = """
-    SELECT cities.name
+    SELECT name
     FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name = %s
-    ORDER BY cities.id ASC
+    WHERE states.id = (SELECT id FROM states WHERE name = %s)
+    ORDER BY id ASC
     """
     cursor.execute(query, (state_name,))
 
     # Fetch all the results of the query
     cities = cursor.fetchall()
 
-    # Print each city in the required format
-    city_names = [city[0] for city in cities]
-    print(', '.join(city_names))
+    for num, name in enumerate(cities):
+        values = name[0]
+        if num == (len(cities) - 1):
+            print(value, end='')
+        else:
+            print(value, end=', ')
+    print()
 
     # Close the cursor and the database connection
     cursor.close()
