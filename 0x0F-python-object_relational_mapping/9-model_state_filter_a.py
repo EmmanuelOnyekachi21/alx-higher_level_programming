@@ -13,7 +13,7 @@ from model_state import Base, State
 import sys
 
 if __name__ == '__main__':
-    # Get the MySQL credentials and database name from the command line arguments
+    # Get MySQL credentials and database name from the command line arguments
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
