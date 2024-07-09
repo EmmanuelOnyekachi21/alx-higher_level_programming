@@ -4,7 +4,11 @@
 """
 This script prints the State object with the name passed as an argument
 from the database hbtn_0e_6_usa.
-It takes 4 arguments: mysql username, mysql password, database name, and state name to search.
+It takes 4 arguments:
+    mysql username,
+    mysql password,
+    database name,
+    and state name to search.
 """
 
 from sqlalchemy import create_engine
