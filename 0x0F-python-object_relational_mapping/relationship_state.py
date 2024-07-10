@@ -6,13 +6,10 @@ This module defines a State class and an instance Base usin g SQLAlchemy ORM.
 """
 
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, create_engine
 import sys
-from relationship_city import City
-
-Base = declarative_base()
+from relationship_city import City, Base
 
 
 class State(Base):
