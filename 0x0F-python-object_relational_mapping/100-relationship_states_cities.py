@@ -37,9 +37,10 @@ if __name__ == '__main__':
     # Create the State "California" with the City "San Francisco"
     new_state = State(name='California')
     new_city = City(name="San Francisco", state=new_state)
+    new_state.cities.append(new_city)
 
     # Add the new state (and city) to the session
-    session.add(new_city)
+    session.add(new_state)
 
     # Commit the session to the database
     session.commit()
