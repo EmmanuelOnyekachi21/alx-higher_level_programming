@@ -26,7 +26,7 @@ if __name__ == '__main__':
             r_name = json_response.get('name')
 
             if r_id is not None and r_name is not None:
-                print(f"[{user_id}] {name}")
+                print(f"[{r_id}] {r_name}")
             else:
                 print("No result")
     except ValueError:
