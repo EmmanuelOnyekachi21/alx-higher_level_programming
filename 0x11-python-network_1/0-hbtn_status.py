@@ -6,12 +6,14 @@ Fetches https://alx-intranet.hbtn.io/status.
 
 import urllib.request
 
-request = urllib.request.Request('https://alx-intranet.hbtn.io/status')
 
-with urllib.request.urlopen(request) as response:
-    the_page = response.read()
+if __name__ == '__main__':
+    request = urllib.request.Request('https://alx-intranet.hbtn.io/status')
 
-print(f'Body response:$')
-print(f'\t- type: {type(the_page)}')
-print("\t- content: {}".format(the_page))
-print("\t- utf8 content: {}".format(the_page.decode('utf-8')))
+    with urllib.request.urlopen(request) as response:
+        the_page = response.read()
+
+    print(f'Body response:$')
+    print(f'\t- type: {type(the_page)}')
+    print("\t- content: {}".format(the_page))
+    print("\t- utf8 content: {}".format(the_page.decode('utf-8')))
