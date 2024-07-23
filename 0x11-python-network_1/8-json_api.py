@@ -22,8 +22,8 @@ if __name__ == '__main__':
         if len(json_response) <= 0:
             print('No result')
         else:
-            r_id = r.get('id')
-            r_name = r.get('name')
+            r_id = json_response.get('id')
+            r_name = json_response.get('name')
 
             if r_id is not None and r_name is not None:
                 print(f"[{user_id}] {name}")
