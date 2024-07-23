@@ -19,7 +19,7 @@ if __name__ == '__main__':
     try:
         json_response = r.json()
 
-        if len(json_response) <= 0:
+        if not json_response:
             print('No result')
         else:
             r_id = json_response.get('id')
