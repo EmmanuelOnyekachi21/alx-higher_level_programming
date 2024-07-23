@@ -2,8 +2,8 @@
 
 """
 - Takes a URL,
-- Sends a POST request to the URL with the email as a parameter,
-- And displays the body of the response(decoded in utf-8)
+- Sends a POST request to the passed URL with the email as a parameter,
+- and displays the body of the response (decoded in utf-8)
 """
 
 import urllib.request
@@ -16,10 +16,10 @@ if __name__ == '__main__':
     email = sys.argv[2]
 
     # Create the data dictionary with the email parameter
-    values = {'email': email}
+    value = {'email': email}
 
     # Encode the data to be sent in the POST request
-    data = urllib.parse.urlencode(values)
+    data = urllib.parse.urlencode(value)
     data = data.encode('ascii')
 
     # Create a POST request with the encoded data
