@@ -4,6 +4,9 @@ prints an integer.
 """
 
 
+import sys
+
+
 def safe_print_integer_err(value):
     """
     Entry point.
