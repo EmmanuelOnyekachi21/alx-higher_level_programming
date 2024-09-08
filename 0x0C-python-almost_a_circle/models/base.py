@@ -91,11 +91,6 @@ class Base:
             Instance of the class with attributes set from the dictionary.
         """
         # Create a dummy instance.
-        #dummy_instance = cls(1, 1)
-
-        #dummy_instance.update(**dictionary)
-
-        #return dummy_instance
         if cls.__name__ == 'Rectangle':
             dummy = cls(1, 1)
         elif cls.__name__ == 'Square':
