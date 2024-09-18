@@ -17,8 +17,8 @@ const { dict } = require('./101-data');
  */
 const newDict = {};
 
-for (let key in dict) {
-  let occurence = dict[key];
+for (const key in dict) {
+  const occurence = dict[key];
 
   if (!newDict[occurence]) {
     newDict[occurence] = [];
